@@ -1,40 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{12448CD5-D860-4C1C-8B9F-139F3794B9BC}</ProjectGuid>
+    <ProjectGuid>{3D37712A-B1C4-4BAB-8A12-313393CD4595}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Newtonsoft.Json.MonoTouch</RootNamespace>
-    <AssemblyName>Newtonsoft.Json.MonoTouch</AssemblyName>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Newtonsoft.Json.MonoTouch.Full</RootNamespace>
+    <AssemblyName>Newtonsoft.Json.MonoTouch.Server</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;MONOTOUCH;SILVERLIGHT</DefineConstants>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;MONOTOUCH;SILVERLIGHT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Release</OutputPath>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <DefineConstants>MONOTOUCH;SILVERLIGHT</DefineConstants>
-    <NoStdLib>false</NoStdLib>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bson\BsonBinaryType.cs" />
@@ -60,8 +64,8 @@
     <Compile Include="Converters\RegexConverter.cs" />
     <Compile Include="Converters\StringEnumConverter.cs" />
     <Compile Include="Converters\XmlNodeConverter.cs" />
-    <Compile Include="FormatterAssemblyStyle.cs" />
     <Compile Include="DefaultValueHandling.cs" />
+    <Compile Include="FormatterAssemblyStyle.cs" />
     <Compile Include="IJsonLineInfo.cs" />
     <Compile Include="JsonArrayAttribute.cs" />
     <Compile Include="JsonConstructorAttribute.cs" />
@@ -109,6 +113,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReferenceLoopHandling.cs" />
     <Compile Include="Required.cs" />
+    <Compile Include="Schema\Extensions.cs" />
+    <Compile Include="Schema\JsonSchema.cs" />
+    <Compile Include="Schema\JsonSchemaBuilder.cs" />
+    <Compile Include="Schema\JsonSchemaConstants.cs" />
+    <Compile Include="Schema\JsonSchemaException.cs" />
+    <Compile Include="Schema\JsonSchemaGenerator.cs" />
+    <Compile Include="Schema\JsonSchemaModel.cs" />
+    <Compile Include="Schema\JsonSchemaModelBuilder.cs" />
+    <Compile Include="Schema\JsonSchemaNode.cs" />
+    <Compile Include="Schema\JsonSchemaNodeCollection.cs" />
+    <Compile Include="Schema\JsonSchemaResolver.cs" />
+    <Compile Include="Schema\JsonSchemaType.cs" />
+    <Compile Include="Schema\JsonSchemaWriter.cs" />
+    <Compile Include="Schema\UndefinedSchemaIdHandling.cs" />
+    <Compile Include="Schema\ValidationEventArgs.cs" />
+    <Compile Include="Schema\ValidationEventHandler.cs" />
     <Compile Include="SerializationBinder.cs" />
     <Compile Include="Serialization\CachedAttributeGetter.cs" />
     <Compile Include="Serialization\CamelCasePropertyNamesContractResolver.cs" />
@@ -133,10 +153,11 @@
     <Compile Include="Serialization\JsonProperty.cs" />
     <Compile Include="Serialization\JsonPropertyCollection.cs" />
     <Compile Include="Serialization\JsonSerializerInternalBase.cs" />
-    <Compile Include="Serialization\JsonSerializerProxy.cs" />
     <Compile Include="Serialization\JsonSerializerInternalReader.cs" />
     <Compile Include="Serialization\JsonSerializerInternalWriter.cs" />
+    <Compile Include="Serialization\JsonSerializerProxy.cs" />
     <Compile Include="Serialization\JsonStringContract.cs" />
+    <Compile Include="Serialization\JsonTypeReflector.cs" />
     <Compile Include="Serialization\LateBoundMetadataTypeAttribute.cs" />
     <Compile Include="Serialization\ObjectConstructor.cs" />
     <Compile Include="Serialization\OnErrorAttribute.cs" />
@@ -172,29 +193,36 @@
     <Compile Include="Utilities\StringUtils.cs" />
     <Compile Include="Utilities\ThreadSafeStore.cs" />
     <Compile Include="Utilities\ValidationUtils.cs" />
-    <Compile Include="Schema\Extensions.cs" />
-    <Compile Include="Schema\JsonSchemaException.cs" />
-    <Compile Include="Schema\JsonSchemaModel.cs" />
-    <Compile Include="Schema\JsonSchemaModelBuilder.cs" />
-    <Compile Include="Schema\JsonSchemaNodeCollection.cs" />
-    <Compile Include="Schema\JsonSchemaNode.cs" />
-    <Compile Include="Schema\JsonSchemaWriter.cs" />
-    <Compile Include="Schema\UndefinedSchemaIdHandling.cs" />
-    <Compile Include="Schema\ValidationEventArgs.cs" />
-    <Compile Include="Schema\ValidationEventHandler.cs" />
-    <Compile Include="Schema\JsonSchema.cs" />
-    <Compile Include="Schema\JsonSchemaBuilder.cs" />
-    <Compile Include="Schema\JsonSchemaConstants.cs" />
-    <Compile Include="Schema\JsonSchemaGenerator.cs" />
-    <Compile Include="Schema\JsonSchemaResolver.cs" />
-    <Compile Include="Schema\JsonSchemaType.cs" />
-    <Compile Include="Serialization\JsonTypeReflector.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MicroSystemRuntimeSerialization\MicroSystemRuntimeSerialization.csproj">
-      <Project>{27B1E992-9210-408C-9542-C820802EAF8F}</Project>
-      <Name>MicroSystemRuntimeSerialization</Name>
-    </ProjectReference>
+    <None Include="Dynamic.snk" />
+    <None Include="Newtonsoft.Json.MonoTouch.pidb" />
+    <None Include="Newtonsoft.Json.MonoTouch.sln.docstates.suo" />
+    <None Include="Newtonsoft.Json.ruleset" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Release\build.force" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Release\ResolveAssemblyReference.cache" />
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Content Include="Newtonsoft.Json.MonoDroid.csproj" />
+    <Content Include="Newtonsoft.Json.MonoTouch.csproj" />
+    <Content Include="obj\Debug\Newtonsoft.Json.MonoTouch.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Newtonsoft.Json.MonoTouch.dll" />
+    <Content Include="obj\Debug\Newtonsoft.Json.MonoTouch.pdb" />
+    <Content Include="obj\Release\Newtonsoft.Json.MonoTouch.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\Newtonsoft.Json.MonoTouch.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="obj\Release\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>

@@ -354,20 +354,53 @@ namespace Newtonsoft.Json.Utilities
     {
       if (source == null)
         throw new ArgumentNullException("source");
+
       if (valueSelector == null)
         throw new ArgumentNullException("valueSelector");
 
-      var caseInsensitiveResults = source.Where(s => string.Compare(valueSelector(s), testValue, StringComparison.OrdinalIgnoreCase) == 0);
-      if (caseInsensitiveResults.Count() <= 1)
+//        var caseInsensitiveResults = source.Where(s => string.Compare(valueSelector(s), testValue, StringComparison.OrdinalIgnoreCase) == 0);
+
+      var caseInsensitiveResults = new List<TSource>();
+      foreach (var source1 in source)
       {
-        return caseInsensitiveResults.SingleOrDefault();
+          if (string.Compare(valueSelector(source1), testValue, StringComparison.OrdinalIgnoreCase) == 0)
+          {
+              caseInsensitiveResults.Add(source1);
+              break;
+          }
       }
-      else
-      {
+
+      if (caseInsensitiveResults.Count() == 0)
+          return default(TSource);
+
+      if (caseInsensitiveResults.Count() == 1)
+          return caseInsensitiveResults[0];
+
+
         // multiple results returned. now filter using case sensitivity
-        var caseSensitiveResults = source.Where(s => string.Compare(valueSelector(s), testValue, StringComparison.Ordinal) == 0);
-        return caseSensitiveResults.SingleOrDefault();
-      }
+        // var caseSensitiveResults = source.Where(s => string.Compare(valueSelector(s), testValue, StringComparison.Ordinal) == 0);
+        var caseSensitiveResults = new List<TSource>();
+        foreach (var source1 in source)
+        {
+            if (string.Compare(valueSelector(source1), testValue, StringComparison.Ordinal) == 0)
+            {
+                caseSensitiveResults.Add(source1);
+                break; // BREAK HERE BECAUSE OF PRIOR "SINGLEORDEFAULT" BELOW. EXPECTED TO ONLY HAVE ONE MATCH
+            }
+        }
+
+        // http://msdn.microsoft.com/de-de/library/bb342451.aspx
+        // Enumerable.SingleOrDefault<TSource> Method (IEnumerable<TSource>) "Returns the only element of a sequence,
+        // or a default value if the sequence is empty; this method throws an exception if there is more than one
+        // element in the sequence."
+
+        if (caseSensitiveResults.Count() == 0)
+            return default(TSource);
+
+        if (caseSensitiveResults.Count() == 1)
+            return caseSensitiveResults[0];
+
+        throw new InvalidOperationException("ForgivingCaseSensitiveFind: List of " + source.GetType().Name + " had more than one entries.");
     }
 
     public static string ToCamelCase(string s)

@@ -62,12 +62,13 @@ namespace Newtonsoft.Json.Linq
     /// </summary>
     public event AddingNewEventHandler AddingNew;
 #endif
-#if !MONOTOUCH && SILVERLIGHT || !(NET20 || NET35)
-    /// <summary>
-    /// Occurs when the items list of the collection has changed, or the collection is reset.
-    /// </summary>
-    public event NotifyCollectionChangedEventHandler CollectionChanged;
-#endif
+       
+      #if !MONOTOUCH && SILVERLIGHT || !(NET20 || NET35)
+          /// <summary>
+          /// Occurs when the items list of the collection has changed, or the collection is reset.
+          /// </summary>
+          public event NotifyCollectionChangedEventHandler CollectionChanged;
+      #endif
 
     /// <summary>
     /// Gets the container's children tokens.

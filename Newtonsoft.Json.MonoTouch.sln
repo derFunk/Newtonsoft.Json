@@ -1,7 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newtonsoft.Json.MonoTouch", "Newtonsoft.Json\Newtonsoft.Json.MonoTouch.csproj", "{12448CD5-D860-4C1C-8B9F-139F3794B9BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroSystemRuntimeSerialization", "..\MicroSystemRuntimeSerialization\MicroSystemRuntimeSerialization.csproj", "{27B1E992-9210-408C-9542-C820802EAF8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newtonsoft.Json.MonoTouch.Server", "Newtonsoft.Json\Newtonsoft.Json.MonoTouch.Server.csproj", "{3D37712A-B1C4-4BAB-8A12-313393CD4595}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +17,17 @@ Global
 		{12448CD5-D860-4C1C-8B9F-139F3794B9BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12448CD5-D860-4C1C-8B9F-139F3794B9BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12448CD5-D860-4C1C-8B9F-139F3794B9BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27B1E992-9210-408C-9542-C820802EAF8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27B1E992-9210-408C-9542-C820802EAF8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27B1E992-9210-408C-9542-C820802EAF8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27B1E992-9210-408C-9542-C820802EAF8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D37712A-B1C4-4BAB-8A12-313393CD4595}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D37712A-B1C4-4BAB-8A12-313393CD4595}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D37712A-B1C4-4BAB-8A12-313393CD4595}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D37712A-B1C4-4BAB-8A12-313393CD4595}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Newtonsoft.Json\Newtonsoft.Json.MonoTouch.csproj
